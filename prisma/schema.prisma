@@ -1,0 +1,38 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  tech        String   @default("") // comma-separated, e.g. "Next.js, Prisma"
+  href        String?
+  repo        String?
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// Single row (id = 1) holding the contact section.
+model Contact {
+  id        Int      @id @default(1)
+  email     String
+  phone     String?
+  location  String?
+  message   String
+  updatedAt DateTime @updatedAt
+}
+
+model SocialLink {
+  id    String @id @default(cuid())
+  label String
+  href  String
+  order Int    @default(0)
+}

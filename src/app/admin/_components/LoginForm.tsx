@@ -4,7 +4,7 @@ import { useActionState } from "react";
 import { login } from "../actions";
 import { inputClass, primaryButton } from "./styles";
 
-export function LoginForm() {
+export function LoginForm({ defaultPassword }: { defaultPassword?: string }) {
   const [state, action, pending] = useActionState(login, undefined);
 
   return (
@@ -20,6 +20,7 @@ export function LoginForm() {
           required
           autoFocus
           autoComplete="current-password"
+          defaultValue={defaultPassword}
           className={inputClass}
         />
       </div>

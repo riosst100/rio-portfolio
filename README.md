@@ -30,6 +30,9 @@ Cookie admin bertanda `Secure` di production. Itu tetap jalan di `http://localho
 admin diakses lewat HTTP biasa di alamat lain (misalnya IP LAN), set `COOKIE_SECURE=false`.
 Untuk server publik, pasang HTTPS dan biarkan default-nya.
 
+Untuk testing, set `LOGIN_PREFILL=true` supaya password admin terisi otomatis di `/admin/login`.
+Jangan aktifkan di production, karena password akan terlihat di source halaman login.
+
 ## REST API
 
 Base URL: `http://localhost:3005` (atau domain production).
